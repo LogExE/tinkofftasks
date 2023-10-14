@@ -18,8 +18,9 @@ public class Task2Test {
         assertThat(dig3).isEqualTo(4);
 
         int dign = 1;
-        for (int n = 0; n <= 9; ++n, dign *= 10)
+        for (int n = 0; n <= 9; ++n, dign *= 10) {
             assertThat(Task2.countDigits(dign)).isEqualTo(n + 1);
+        }
     }
 
     @Test
@@ -35,7 +36,8 @@ public class Task2Test {
         assertThat(dig3).isEqualTo(4);
 
         int dign = -1;
-        for (int n = 0; n <= 9; ++n, dign *= 10)
+        for (int n = 0; n <= 9; ++n, dign *= 10) {
             assertThat(Task2.countDigits(dign)).isEqualTo(n + 1);
+        }
     }
 }

@@ -13,13 +13,13 @@ public class Task3Test {
             new int[] {1, 2, 3, 4},
             new int[] {0, 6}
         );
-        assertThat(res1).isEqualTo(true);
+        assertThat(res1).isTrue();
 
         boolean res2 = Task3.isNestable(
             new int[] {3, 1},
             new int[] {4, 0}
         );
-        assertThat(res2).isEqualTo(true);
+        assertThat(res2).isTrue();
     }
 
     @Test
@@ -29,13 +29,13 @@ public class Task3Test {
             new int[] {9, 9, 8},
             new int[] {8, 9}
         );
-        assertThat(res1).isEqualTo(false);
+        assertThat(res1).isFalse();
 
         boolean res2 = Task3.isNestable(
             new int[] {1, 2, 3, 4},
             new int[] {2, 3}
         );
-        assertThat(res2).isEqualTo(false);
+        assertThat(res2).isFalse();
     }
 
     @Test
