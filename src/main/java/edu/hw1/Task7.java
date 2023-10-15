@@ -15,11 +15,11 @@ public class Task7 {
         int bits = bitsLength(n);
         shift = shift % bits;
         int mask = (1 << bits) - 1;
-        int lesser_len = bits - shift;
-        int lesser_mask = (1 << lesser_len) - 1;
-        int upper_mask = mask - lesser_mask;
-        int lesser = n & lesser_mask;
-        int upper = (n & upper_mask) >> lesser_len;
+        int lesserLen = bits - shift;
+        int lesserMask = (1 << lesserLen) - 1;
+        int upperMask = mask - lesserMask;
+        int lesser = n & lesserMask;
+        int upper = (n & upperMask) >> lesserLen;
         return (lesser << shift) | upper;
     }
 
@@ -33,12 +33,12 @@ public class Task7 {
         int bits = bitsLength(n);
         shift = shift % bits;
         int mask = (1 << bits) - 1;
-        int upper_len = bits - shift;
-        int lesser_mask = (1 << shift) - 1;
-        int upper_mask = mask - lesser_mask;
-        int lesser = n & lesser_mask;
-        int upper = (n & upper_mask) >> shift;
-        return (lesser << upper_len) | upper;
+        int upperLen = bits - shift;
+        int lesserMask = (1 << shift) - 1;
+        int upperMask = mask - lesserMask;
+        int lesser = n & lesserMask;
+        int upper = (n & upperMask) >> shift;
+        return (lesser << upperLen) | upper;
     }
 
     private static int bitsLength(int x) {
