@@ -9,8 +9,7 @@ public class Task3 {
         if (arr1.length == 0 || arr2.length == 0) {
             throw new IllegalArgumentException("Arrays should non-empty!");
         }
-        int min1, max1;
-        min1 = max1 = arr1[0];
+        int min1 = arr1[0], max1 = arr1[0];
         for (int j : arr1) {
             if (j < min1) {
                 min1 = j;
@@ -19,8 +18,7 @@ public class Task3 {
                 max1 = j;
             }
         }
-        int min2, max2;
-        min2 = max2 = arr2[0];
+        int min2 = arr2[0], max2 = arr2[0];
         for (int j : arr2) {
             if (j < min2) {
                 min2 = j;
