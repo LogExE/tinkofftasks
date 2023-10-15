@@ -17,10 +17,7 @@ public class Task1 {
         } catch (NumberFormatException e) {
             return -1;
         }
-        if (mins < 0 || secs < 0) {
-            return -1;
-        }
-        if (secs > 59) {
+        if (mins < 0 || secs < 0 || secs > 59) {
             return -1;
         }
         return mins * 60 + secs;
