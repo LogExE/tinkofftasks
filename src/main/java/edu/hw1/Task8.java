@@ -21,15 +21,15 @@ public class Task8 {
                 throw new IllegalArgumentException("Field should be 8 columns in size!");
             }
         }
-        for (int row = 0; row < 8; ++row) {
-            for (int col = 0; col < 8; ++col) {
+        for (int row = 0; row < FIELD_SIZE; ++row) {
+            for (int col = 0; col < FIELD_SIZE; ++col) {
                 if (cellHasKnight[row][col] != CELL_EMPTY && cellHasKnight[row][col] != CELL_KNIGHT) {
                     throw new IllegalArgumentException("Field should contain only 0s and 1s!");
                 }
             }
         }
-        for (int row = 0; row < 8; ++row) {
-            for (int col = 0; col < 8; ++col) {
+        for (int row = 0; row < FIELD_SIZE; ++row) {
+            for (int col = 0; col < FIELD_SIZE; ++col) {
                 if (cellHasKnight[row][col] != CELL_EMPTY) {
                     for (int k = 0; k < KNIGHT_MOVES; ++k) {
                         int row_step = row + KNIGHT_MOVE_ROW[k];
