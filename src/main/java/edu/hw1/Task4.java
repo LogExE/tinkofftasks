@@ -1,6 +1,10 @@
 package edu.hw1;
 
 public class Task4 {
+    private Task4() {
+
+    }
+
     public static String fixString(String toFix) {
         String res = "";
         int add = 1;

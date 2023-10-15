@@ -5,6 +5,10 @@ import java.util.Arrays;
 public class Task6 {
     private static final int KAPREKAR_NUMBER = 6174;
 
+    private Task6() {
+
+    }
+
     public static int countK(int x) {
         if (x == KAPREKAR_NUMBER) {
             return 0;

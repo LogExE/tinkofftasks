@@ -1,6 +1,10 @@
 package edu.hw1;
 
 public class Task7 {
+    private Task7() {
+
+    }
+
     public static int rotateLeft(int n, int shift) {
         if (n <= 0) {
             throw new IllegalArgumentException("Only positive numbers can be rotated!");

@@ -8,6 +8,10 @@ public class Task8 {
     private static final int[] KNIGHT_MOVE_ROW = {1, -1, 1, -1, 2, 2, -2, -2};
     private static final int KNIGHT_MOVES = KNIGHT_MOVE_COL.length;
 
+    private Task8() {
+
+    }
+
     public static boolean knightBoardCapture(byte[][] cellHasKnight) {
         if (cellHasKnight.length != FIELD_SIZE) {
             throw new IllegalArgumentException("Field should be 8 rows in size!");

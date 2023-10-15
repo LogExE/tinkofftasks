@@ -1,6 +1,10 @@
 package edu.hw1;
 
 public class Task2 {
+    private Task2() {
+
+    }
+
     public static int countDigits(int x) {
         x = Math.abs(x);
         int ans = 1;

@@ -1,9 +1,14 @@
 package edu.hw1;
 
 public class Task5 {
+    private Task5() {
+
+    }
+
     public static boolean isPalindromeDescendant(int x) {
-        if (x < 0)
+        if (x < 0) {
             throw new IllegalArgumentException("Number should be non-negative!");
+        }
         if (flipInt(x) == x) {
             return true;
         }

@@ -1,6 +1,10 @@
 package edu.hw1;
 
 public class Task1 {
+    private Task1() {
+
+    }
+
     public static long getVideoDurationSeconds(String duration) {
         String[] sep = duration.split(":");
         if (sep.length != 2) {
