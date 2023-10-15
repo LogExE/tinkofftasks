@@ -27,6 +27,7 @@ public class Task7 {
         return (lesser << shift) | upper;
     }
 
+    @SuppressWarnings("ParameterAssignment")
     public static int rotateRight(int n, int shift) {
         if (n <= 0) {
             throw new IllegalArgumentException(POS_NUMBER_ROTATE_STRING);

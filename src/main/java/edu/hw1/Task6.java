@@ -10,6 +10,7 @@ public class Task6 {
 
     }
 
+    @SuppressWarnings("MagicNumber")
     public static int countK(int x) {
         if (x == KAPREKAR_NUMBER) {
             return 0;
