@@ -3,7 +3,7 @@ package edu.hw1;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class Task6Test {
     @Test
@@ -24,14 +24,18 @@ public class Task6Test {
     @Test
     @DisplayName("Проверка чисел <= 1000")
     void testLow() {
-        assertThatThrownBy(() -> Task6.countK(1000)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> Task6.countK(887)).isInstanceOf(IllegalArgumentException.class);
+        Throwable thrown1 = catchThrowable(() -> Task6.countK(1000));
+        assertThat(thrown1).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("1000");
+        Throwable thrown2 = catchThrowable(() -> Task6.countK(887));
+        assertThat(thrown2).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("digit");
     }
 
     @Test
     @DisplayName("Проверка чисел из одной и той же цифры")
     void testRepeating() {
-        assertThatThrownBy(() -> Task6.countK(1111)).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> Task6.countK(5555)).isInstanceOf(IllegalArgumentException.class);
+        Throwable thrown1 = catchThrowable(() -> Task6.countK(1111));
+        assertThat(thrown1).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("distinct");
+        Throwable thrown2 = catchThrowable(() -> Task6.countK(5555));
+        assertThat(thrown2).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("distinct");
     }
 }

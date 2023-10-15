@@ -3,7 +3,7 @@ package edu.hw1;
 public class Task3 {
     public static boolean isNestable(int[] arr1, int[] arr2) {
         if (arr1.length == 0 || arr2.length == 0) {
-            throw new IllegalArgumentException("Arrays should contain something!");
+            throw new IllegalArgumentException("Arrays should non-empty!");
         }
         int min1, max1;
         min1 = max1 = arr1[0];

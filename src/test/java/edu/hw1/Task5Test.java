@@ -3,7 +3,7 @@ package edu.hw1;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class Task5Test {
     @Test
@@ -37,6 +37,7 @@ public class Task5Test {
     @Test
     @DisplayName("Проверка, когда число - отрицательное")
     void testNegative() {
-        assertThatThrownBy(() -> Task5.isPalindromeDescendant(-42)).isInstanceOf(IllegalArgumentException.class);
+        Throwable thrown = catchThrowable(() -> Task5.isPalindromeDescendant(-42));
+        assertThat(thrown).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("negative");
     }
 }

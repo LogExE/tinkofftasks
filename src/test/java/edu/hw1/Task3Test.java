@@ -3,7 +3,7 @@ package edu.hw1;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.catchThrowable;
 
 public class Task3Test {
     @Test
@@ -41,17 +41,20 @@ public class Task3Test {
     @Test
     @DisplayName("Проверка, когда есть пустой массив")
     void emptyArrays() {
-        assertThatThrownBy(() -> Task3.isNestable(
+        Throwable thrown1 = catchThrowable(() -> Task3.isNestable(
             new int[] {1, 2, 3, 4},
             new int[] {}
-        )).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> Task3.isNestable(
+        ));
+        assertThat(thrown1).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("empty");
+        Throwable thrown2 = catchThrowable(() -> Task3.isNestable(
             new int[] {},
             new int[] {1, -42}
-        )).isInstanceOf(IllegalArgumentException.class);
-        assertThatThrownBy(() -> Task3.isNestable(
+        ));
+        assertThat(thrown2).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("empty");
+        Throwable thrown3 = catchThrowable(() -> Task3.isNestable(
             new int[] {},
             new int[] {}
-        )).isInstanceOf(IllegalArgumentException.class);
+        ));
+        assertThat(thrown3).isInstanceOf(IllegalArgumentException.class).hasMessageContaining("empty");
     }
 }
