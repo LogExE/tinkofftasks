@@ -46,6 +46,7 @@ public class Task7 {
         return (lesser << upperLen) | upper;
     }
 
+    @SuppressWarnings("ParameterAssignment")
     private static int bitsLength(int x) {
         int cnt = 0;
         while (x > 0) {

@@ -10,7 +10,7 @@ public class Task6 {
 
     }
 
-    @SuppressWarnings("MagicNumber")
+    @SuppressWarnings({"MagicNumber", "ParameterAssignment"})
     public static int countK(int x) {
         if (x == KAPREKAR_NUMBER) {
             return 0;
