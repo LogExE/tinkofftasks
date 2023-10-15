@@ -1,16 +1,20 @@
 package edu.hw1;
 
 public class Task7 {
+    private static final String POS_NUMBER_ROTATE_STRING = "Only positive numbers can be rotated!";
+    private static final String NON_NEG_SHIFT_STRING = "Shift amount should be non-negative!";
+
     private Task7() {
 
     }
 
+    @SuppressWarnings("ParameterAssignment")
     public static int rotateLeft(int n, int shift) {
         if (n <= 0) {
-            throw new IllegalArgumentException("Only positive numbers can be rotated!");
+            throw new IllegalArgumentException(POS_NUMBER_ROTATE_STRING);
         }
         if (shift < 0) {
-            throw new IllegalArgumentException("Shift amount should be non-negative!");
+            throw new IllegalArgumentException(NON_NEG_SHIFT_STRING);
         }
         int bits = bitsLength(n);
         shift = shift % bits;
@@ -25,10 +29,10 @@ public class Task7 {
 
     public static int rotateRight(int n, int shift) {
         if (n <= 0) {
-            throw new IllegalArgumentException("Only positive numbers can be rotated!");
+            throw new IllegalArgumentException(POS_NUMBER_ROTATE_STRING);
         }
         if (shift < 0) {
-            throw new IllegalArgumentException("Shift amount should be non-negative!");
+            throw new IllegalArgumentException(NON_NEG_SHIFT_STRING);
         }
         int bits = bitsLength(n);
         shift = shift % bits;

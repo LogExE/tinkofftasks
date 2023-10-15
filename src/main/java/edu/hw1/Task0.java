@@ -10,13 +10,13 @@ public class Task0 {
 
     }
 
-    public static void log_hello() {
+    public static void logHello() {
         LOGGER.info("Привет, мир!");
     }
 
     /*
     public static void main(String[] args) {
-        log_hello();
+        logHello();
     }
      */
 }

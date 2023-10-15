@@ -24,6 +24,7 @@ public class Task5 {
         return isPalindromeDescendant(child);
     }
 
+    @SuppressWarnings({"MagicNumber", "ParameterAssignment"})
     private static int intDigitsCount(int x) {
         int cnt = 0;
         while (x > 0) {
@@ -33,6 +34,7 @@ public class Task5 {
         return cnt;
     }
 
+    @SuppressWarnings({"MagicNumber", "ParameterAssignment"})
     private static int getIntChild(int x) {
         // в этот метод должны передаваться только числа с четным кол-вом цифр
         int res = 0;
@@ -51,6 +53,7 @@ public class Task5 {
         return flipInt(res);
     }
 
+    @SuppressWarnings({"MagicNumber", "ParameterAssignment"})
     private static int flipInt(int x) {
         int res = 0;
         while (x > 0) {

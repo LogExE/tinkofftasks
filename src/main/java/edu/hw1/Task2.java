@@ -5,6 +5,7 @@ public class Task2 {
 
     }
 
+    @SuppressWarnings({"MagicNumber", "ParameterAssignment"})
     public static int countDigits(int x) {
         x = Math.abs(x);
         int ans = 1;

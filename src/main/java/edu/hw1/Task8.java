@@ -32,9 +32,9 @@ public class Task8 {
             for (int col = 0; col < FIELD_SIZE; ++col) {
                 if (cellHasKnight[row][col] != CELL_EMPTY) {
                     for (int k = 0; k < KNIGHT_MOVES; ++k) {
-                        int row_step = row + KNIGHT_MOVE_ROW[k];
-                        int col_step = col + KNIGHT_MOVE_COL[k];
-                        if (cellValid(row_step, col_step) && cellHasKnight[row_step][col_step] != CELL_EMPTY) {
+                        int rowStep = row + KNIGHT_MOVE_ROW[k];
+                        int colStep = col + KNIGHT_MOVE_COL[k];
+                        if (cellValid(rowStep, colStep) && cellHasKnight[rowStep][colStep] != CELL_EMPTY) {
                             return false;
                         }
                     }
