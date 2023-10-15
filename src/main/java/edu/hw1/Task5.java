@@ -9,7 +9,7 @@ public class Task5 {
         }
         int cnt = intDigitsCount(x);
         if (cnt % 2 == 1) {
-            // не известно, какое число считать потомком в таком случае
+            // не известно, какое число считать потомком в таком случае - пар не хватает
             return false;
         }
         int child = getIntChild(x);
