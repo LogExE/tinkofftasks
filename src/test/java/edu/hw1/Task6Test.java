@@ -4,21 +4,22 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Task6Test {
     @Test
     @DisplayName("Проверка числа Капрекара")
     void testKaprekar() {
-        assertThat(Task6.countK(6174)).isEqualTo(0);
+        assertEquals(Task6.countK(6174), 0);
     }
 
     @Test
     @DisplayName("Проверка числа шагов")
     void testSteps() {
-        assertThat(Task6.countK(6621)).isEqualTo(5);
-        assertThat(Task6.countK(6554)).isEqualTo(4);
-        assertThat(Task6.countK(1234)).isEqualTo(3);
-        assertThat(Task6.countK(9993)).isEqualTo(6);
+        assertEquals(Task6.countK(6621), 5);
+        assertEquals(Task6.countK(6554), 4);
+        assertEquals(Task6.countK(1234), 3);
+        assertEquals(Task6.countK(9993), 6);
     }
 
     @Test

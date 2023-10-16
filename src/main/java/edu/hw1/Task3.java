@@ -5,12 +5,12 @@ public class Task3 {
 
     }
 
-    @SuppressWarnings("MultipleVariableDeclarations")
     public static boolean isNestable(int[] arr1, int[] arr2) {
         if (arr1.length == 0 || arr2.length == 0) {
             throw new IllegalArgumentException("Arrays should non-empty!");
         }
-        int min1 = arr1[0], max1 = arr1[0];
+        int min1 = arr1[0];
+        int max1 = arr1[0];
         for (int j : arr1) {
             if (j < min1) {
                 min1 = j;
@@ -19,7 +19,8 @@ public class Task3 {
                 max1 = j;
             }
         }
-        int min2 = arr2[0], max2 = arr2[0];
+        int min2 = arr2[0];
+        int max2 = arr2[0];
         for (int j : arr2) {
             if (j < min2) {
                 min2 = j;

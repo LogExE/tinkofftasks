@@ -8,22 +8,22 @@ public class Task1 {
 
     }
 
-    @SuppressWarnings("MultipleVariableDeclarations")
     public static long getVideoDurationSeconds(String duration) {
         String[] sep = duration.split(":");
         if (sep.length != 2) {
             return RESULT_ERROR;
         }
-        long mins, secs;
+        long minutes;
+        long seconds;
         try {
-            mins = Long.parseLong(sep[0]);
-            secs = Long.parseLong(sep[1]);
+            minutes = Long.parseLong(sep[0]);
+            seconds = Long.parseLong(sep[1]);
         } catch (NumberFormatException e) {
             return RESULT_ERROR;
         }
-        if (mins < 0 || secs < 0 || secs >= SECONDS_MAX) {
+        if (minutes < 0 || seconds < 0 || seconds >= SECONDS_MAX) {
             return RESULT_ERROR;
         }
-        return mins * SECONDS_MAX + secs;
+        return minutes * SECONDS_MAX + seconds;
     }
 }
