@@ -9,11 +9,12 @@ public class FaultyConnection implements Connection {
 
     private final Random rand = new Random();
 
+    @SuppressWarnings("MultipleStringLiterals")
     @Override
     public void execute(String cmd) {
         boolean failed = rand.nextBoolean();
         if (failed) {
-            throw new ConnectionException();
+            throw new ConnectionException("Command " + cmd + " execution failed!");
         }
         LOGGER.info("Command " + cmd + " executed successfully!");
     }

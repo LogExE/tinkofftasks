@@ -15,30 +15,39 @@ public final class PopularCommandExecutor {
     }
 
     public void updatePackages() {
-        tryExecute("apt update && apt upgrade -y");
+        try {
+            tryExecute("apt update && apt upgrade -y");
+        } catch (ConnectionException conEx) {
+            int exCount = 1 + conEx.getSuppressed().length;
+            if (exCount < maxAttempts) {
+                LOGGER.warn("During package updates " + exCount + " exceptions occurred");
+            } else {
+                LOGGER.error("Max attempts reached during package updates!");
+            }
+        }
     }
 
     void tryExecute(String command) {
-        Throwable cause = null;
+        ConnectionException accumEx = null;
         try (Connection con = manager.getConnection()) {
-            boolean executed = false;
             for (int i = 0; i < maxAttempts; ++i) {
                 try {
                     con.execute(command);
-                    executed = true;
                     break;
                 } catch (ConnectionException conEx) {
-                    LOGGER.info("Failed to execute command...");
-                    cause = conEx;
+                    LOGGER.warn(conEx.getMessage());
+                    if (accumEx == null) {
+                        accumEx = conEx;
+                    } else {
+                        accumEx.addSuppressed(conEx);
+                    }
                 }
-            }
-            if (!executed) {
-                ConnectionException ex = new ConnectionException();
-                ex.initCause(cause);
-                throw ex;
             }
         } catch (Exception ex) {
             LOGGER.error("Connection couldn't be closed...");
+        }
+        if (accumEx != null) {
+            throw accumEx;
         }
     }
 }

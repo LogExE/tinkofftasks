@@ -10,9 +10,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Task2Test {
     static Arguments[] rectangles() {
-        return new Arguments[]{
-            Arguments.of(new Rectangle()),
-            Arguments.of(new Square())
+        return new Arguments[] {
+            Arguments.of(new Rectangle(5, 15)),
+            Arguments.of(new Square(2))
         };
     }
 
@@ -20,9 +20,9 @@ public class Task2Test {
     @MethodSource("rectangles")
     @DisplayName("Тест из условия")
     void rectangleArea(Rectangle rect) {
-        rect = rect.setWidth(20);
-        rect = rect.setHeight(10);
+        Rectangle newRect = rect.setWidth(20);
+        newRect = newRect.setHeight(10);
 
-        assertEquals(rect.area(), 200.0);
+        assertEquals(newRect.area(), 200.0);
     }
 }
