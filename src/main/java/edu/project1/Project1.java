@@ -7,7 +7,7 @@ public class Project1 {
 
 /*
     public static void main(String[] args) {
-        new ConsoleHangman(new ITWordsDict()).run();
+        new HangmanGame(new ITWordsDict(), new ConsoleHangman()).run();
     }
 */
 }
