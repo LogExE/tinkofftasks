@@ -8,14 +8,14 @@ public class Task4 {
 
     }
 
-    private static final ArrayList<String> romanBases = new ArrayList<>(List.of(
+    private static final ArrayList<String> ROMAN_BASES = new ArrayList<>(List.of(
         "I",
         "X",
         "C",
         "M"
     ));
 
-    private static final ArrayList<String> romanFives = new ArrayList<>(List.of(
+    private static final ArrayList<String> ROMAN_FIVES = new ArrayList<>(List.of(
         "V",
         "L",
         "D"
@@ -33,20 +33,20 @@ public class Task4 {
         }
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < romanBases.size(); ++i) {
+        for (int i = 0; i < ROMAN_BASES.size(); ++i) {
             if (num == 0) {
                 break;
             }
             int cnt = num % 10;
-            String base = romanBases.get(i);
+            String base = ROMAN_BASES.get(i);
             // здесь в значениях case везде порядок обратный тому, что в алгоритме с quora
             // поскольку число мы разбираем с младшего разряда
             String toAppend = switch (cnt) {
                 case 1, 2, 3 -> base.repeat(cnt);
-                case 4 -> romanFives.get(i) + base;
-                case 5 -> romanFives.get(i);
-                case 6, 7, 8 -> base.repeat(cnt - 5) + romanFives.get(i);
-                case 9 -> romanBases.get(i + 1) + base;
+                case 4 -> ROMAN_FIVES.get(i) + base;
+                case 5 -> ROMAN_FIVES.get(i);
+                case 6, 7, 8 -> base.repeat(cnt - 5) + ROMAN_FIVES.get(i);
+                case 9 -> ROMAN_BASES.get(i + 1) + base;
                 default -> "";
             };
             sb.append(toAppend);
