@@ -1,25 +1,25 @@
 package edu.hw3.task8;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import java.util.Stack;
 
 public class BackwardsIterator<T> implements Iterator<T> {
-    Stack<T> stack = new Stack<>();
+    ArrayList<T> list;
+    int idx;
 
     public BackwardsIterator(Collection<T> col) {
-        for (T el : col) {
-            stack.push(el);
-        }
+        list = new ArrayList<>(col);
+        idx = list.size() - 1;
     }
 
     @Override
     public boolean hasNext() {
-        return stack.size() > 0;
+        return idx >= 0;
     }
 
     @Override
     public T next() {
-        return stack.pop();
+        return list.get(idx--);
     }
 }
