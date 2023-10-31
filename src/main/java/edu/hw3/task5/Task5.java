@@ -1,7 +1,6 @@
 package edu.hw3.task5;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class Task5 {
@@ -11,6 +10,10 @@ public class Task5 {
 
     private static final String ASCENDING_ORDER_ARG = "ASC";
     private static final String DESCENDING_ORDER_ARG = "DESC";
+
+    private static final Comparator<Contact> ASC = Comparator
+        .comparing(contact -> contact.surname() != null ? contact.surname() : contact.name());
+    private static final Comparator<Contact> DESC = ASC.reversed();
 
     public static Contact[] parseContacts(String[] people, String order) {
         if (!order.equals(ASCENDING_ORDER_ARG) && !order.equals(DESCENDING_ORDER_ARG)) {
@@ -28,9 +31,7 @@ public class Task5 {
             res[i] = newCont;
         }
 
-        Comparator<Contact> comp =
-            order.equals(ASCENDING_ORDER_ARG) ? Comparable::compareTo : Collections.reverseOrder();
-        Arrays.sort(res, comp);
+        Arrays.sort(res, order.equals(ASCENDING_ORDER_ARG) ? ASC : DESC);
 
         return res;
     }
