@@ -8,9 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class Task4Test {
     @Test
     void testExamples() {
-        assertEquals(Task4.convertToRoman(2), "II");
-        assertEquals(Task4.convertToRoman(12), "XII");
-        assertEquals(Task4.convertToRoman(16), "XVI");
+        assertEquals("II", Task4.convertToRoman(2));
+        assertEquals("XII", Task4.convertToRoman(12));
+        assertEquals("XVI", Task4.convertToRoman(16));
     }
 
     @Test
@@ -27,9 +27,9 @@ public class Task4Test {
 
     @Test
     void testOtherVariousCases() {
-        assertEquals(Task4.convertToRoman(98), "XCVIII");
-        assertEquals(Task4.convertToRoman(120), "CXX");
-        assertEquals(Task4.convertToRoman(3999), "MMMCMXCIX");
-        assertEquals(Task4.convertToRoman(34), "XXXIV");
+        assertEquals("XCVIII", Task4.convertToRoman(98));
+        assertEquals("CXX", Task4.convertToRoman(120));
+        assertEquals("MMMCMXCIX", Task4.convertToRoman(3999));
+        assertEquals("XXXIV", Task4.convertToRoman(34));
     }
 }

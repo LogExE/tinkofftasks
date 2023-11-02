@@ -13,6 +13,6 @@ public class Task8Test {
     void testExample() {
         Iterator<Integer> it = new BackwardsIterator<>(List.of(1, 2, 3));
         ArrayList<Integer> al = Lists.newArrayList(it);
-        assertEquals(al, List.of(3, 2, 1));
+        assertEquals(List.of(3, 2, 1), al);
     }
 }

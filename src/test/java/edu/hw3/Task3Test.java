@@ -49,12 +49,12 @@ public class Task3Test {
 
     @ParameterizedTest
     @MethodSource("simpleTestParams") <T> void testSimple(Collection<T> arr, Map<T, Integer> res) {
-        assertEquals(Task3.freqDicts(arr), res);
+        assertEquals(res, Task3.freqDicts(arr));
     }
 
     @Test
     void testEmptyCollection() {
-        assertEquals(Task3.freqDicts(List.of()), Map.of());
+        assertEquals(Map.of(), Task3.freqDicts(List.of()));
     }
 
     @Test
@@ -66,6 +66,6 @@ public class Task3Test {
         Map<Boolean, Integer> expected = new HashMap<>();
         expected.put(true, 1);
         expected.put(null, 2);
-        assertEquals(Task3.freqDicts(given), expected);
+        assertEquals(expected, Task3.freqDicts(given));
     }
 }

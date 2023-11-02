@@ -17,7 +17,7 @@ public class Task6Test {
         sm.add(new Stock("INTC", 35.54));
         sm.add(new Stock("AMD", 96.43));
         sm.add(new Stock("AMZN", 127.74));
-        assertEquals(sm.mostValuableStock(), new Stock("AAPL", 168.22));
+        assertEquals(new Stock("AAPL", 168.22), sm.mostValuableStock());
     }
 
     @Test
@@ -28,7 +28,7 @@ public class Task6Test {
         sm.add(new Stock("AMD", 96.43));
         sm.add(new Stock("AMZN", 127.74));
         sm.remove(new Stock("AAPL", 168.22));
-        assertEquals(sm.mostValuableStock(), new Stock("AMZN", 127.74));
+        assertEquals(new Stock("AMZN", 127.74), sm.mostValuableStock());
     }
 
     @Test

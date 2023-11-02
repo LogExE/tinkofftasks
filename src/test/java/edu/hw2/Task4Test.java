@@ -9,7 +9,7 @@ public class Task4Test {
     @Test
     void testMethod() {
         CallingInfo info = Task4.callingInfo();
-        assertEquals(info.className(), "edu.hw2.Task4Test");
-        assertEquals(info.methodName(), "testMethod");
+        assertEquals("edu.hw2.Task4Test", info.className());
+        assertEquals("testMethod", info.methodName());
     }
 }

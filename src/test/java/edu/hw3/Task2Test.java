@@ -12,37 +12,37 @@ public class Task2Test {
     @Test
     void testFourPairs() {
         ArrayList<String> res = new ArrayList<>(List.of("()", "()", "()"));
-        assertEquals(Task2.clusterize("()()()"), res);
+        assertEquals(res, Task2.clusterize("()()()"));
     }
 
     @Test
     void testMatryoshka() {
         ArrayList<String> res = new ArrayList<>(List.of("((()))"));
-        assertEquals(Task2.clusterize("((()))"), res);
+        assertEquals(res, Task2.clusterize("((()))"));
     }
 
     @Test
     void testVariousNested() {
         ArrayList<String> res = new ArrayList<>(List.of("((()))", "(())", "()", "()", "(()())"));
-        assertEquals(Task2.clusterize("((()))(())()()(()())"), res);
+        assertEquals(res, Task2.clusterize("((()))(())()()(()())"));
     }
 
     @Test
     void testTwoClusters() {
         ArrayList<String> res = new ArrayList<>(List.of("((())())", "(()(()()))"));
-        assertEquals(Task2.clusterize("((())())(()(()()))"), res);
+        assertEquals(res, Task2.clusterize("((())())(()(()()))"));
     }
 
     @Test
     void testEmpty() {
         ArrayList<String> res = new ArrayList<>();
-        assertEquals(Task2.clusterize(""), res);
+        assertEquals(res, Task2.clusterize(""));
     }
 
     @Test
     void testWithLetters() {
         ArrayList<String> res = new ArrayList<>(List.of("eeee(a(b1)(bu)s)", "(lol)", "(x(ooo))", "xa"));
-        assertEquals(Task2.clusterize("eeee(a(b1)(bu)s)(lol)(x(ooo))xa"), res);
+        assertEquals(res, Task2.clusterize("eeee(a(b1)(bu)s)(lol)(x(ooo))xa"));
     }
 
     @Test

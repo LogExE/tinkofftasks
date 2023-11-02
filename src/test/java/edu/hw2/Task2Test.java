@@ -23,6 +23,6 @@ public class Task2Test {
         Rectangle newRect = rect.setWidth(20);
         newRect = newRect.setHeight(10);
 
-        assertEquals(newRect.area(), 200.0);
+        assertEquals(200.0, newRect.area());
     }
 }

@@ -43,7 +43,7 @@ public class Task1Test {
     @MethodSource("exprs")
     @DisplayName("Тесты на разных выражениях")
     void variousExprs(Expr expr, double res) {
-        assertEquals(expr.evaluate(), res);
+        assertEquals(res, expr.evaluate());
     }
 
     @Test
@@ -57,6 +57,6 @@ public class Task1Test {
         var exp = new Expr.Exponent(mult, 2);
         var res = new Expr.Addition(exp, new Expr.Constant(1));
 
-        assertEquals(res.evaluate(), 37);
+        assertEquals(37, res.evaluate());
     }
 }

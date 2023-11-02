@@ -10,16 +10,16 @@ public class Task6Test {
     @Test
     @DisplayName("Проверка числа Капрекара")
     void testKaprekar() {
-        assertEquals(Task6.countK(6174), 0);
+        assertEquals(0, Task6.countK(6174));
     }
 
     @Test
     @DisplayName("Проверка числа шагов")
     void testSteps() {
-        assertEquals(Task6.countK(6621), 5);
-        assertEquals(Task6.countK(6554), 4);
-        assertEquals(Task6.countK(1234), 3);
-        assertEquals(Task6.countK(9993), 6);
+        assertEquals(5, Task6.countK(6621));
+        assertEquals(4, Task6.countK(6554));
+        assertEquals(3, Task6.countK(1234));
+        assertEquals(6, Task6.countK(9993));
     }
 
     @Test

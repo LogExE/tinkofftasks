@@ -9,26 +9,26 @@ public class Task4Test {
     @DisplayName("Проверка с четной длиной строки")
     void flipEven() {
         String res1 = Task4.fixString("123456");
-        assertEquals(res1, "214365");
+        assertEquals("214365", res1);
 
         String res2 = Task4.fixString("hTsii  s aimex dpus rtni.g");
-        assertEquals(res2, "This is a mixed up string.");
+        assertEquals("This is a mixed up string.", res2);
 
         String res3 = Task4.fixString("оПомигети псаривьтс ртко!и");
-        assertEquals(res3, "Помогите исправить строки!");
+        assertEquals("Помогите исправить строки!", res3);
     }
 
     @Test
     @DisplayName("Проверка с нечетной длиной строки")
     void flipOdd() {
-        String res1 = Task4.fixString("badce");
-        assertEquals(res1, "abcde");
+        String res = Task4.fixString("badce");
+        assertEquals("abcde", res);
     }
 
     @Test
     @DisplayName("Проверка пустой строки")
     void flipEmpty() {
-        String res1 = Task4.fixString("");
-        assertEquals(res1, "");
+        String res = Task4.fixString("");
+        assertEquals( "", res);
     }
 }

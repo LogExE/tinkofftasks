@@ -17,7 +17,7 @@ public class Task5Test {
             new Contact("David", "Hume"),
             new Contact("John", "Locke")
         };
-        assertArrayEquals(Task5.parseContacts(given, "ASC"), expected);
+        assertArrayEquals(expected, Task5.parseContacts(given, "ASC"));
     }
 
     @Test
@@ -28,21 +28,21 @@ public class Task5Test {
             new Contact("Leonhard", "Euler"),
             new Contact("Paul", "Erdos")
         };
-        assertArrayEquals(Task5.parseContacts(given, "DESC"), expected);
+        assertArrayEquals(expected, Task5.parseContacts(given, "DESC"));
     }
 
     @Test
     void testEmpty() {
         String[] given = new String[] {};
         Contact[] expected = new Contact[] {};
-        assertArrayEquals(Task5.parseContacts(given, "DESC"), expected);
+        assertArrayEquals(expected, Task5.parseContacts(given, "DESC"));
     }
 
     @Test
     void testNullContacts() {
         String[] given = null;
         Contact[] expected = new Contact[] {};
-        assertArrayEquals(Task5.parseContacts(given, "DESC"), expected);
+        assertArrayEquals(expected, Task5.parseContacts(given, "DESC"));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class Task5Test {
             new Contact("Danila", null),
             new Contact("Paul", null)
         };
-        assertArrayEquals(Task5.parseContacts(given, "ASC"), expected);
+        assertArrayEquals(expected, Task5.parseContacts(given, "ASC"));
     }
 
     @Test
