@@ -13,6 +13,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class BFSMazeSolver implements MazeSolver {
     @Override public Optional<List<MazeCoords>> solve(Maze maze, MazeCoords start, MazeCoords target) {
+        if (!maze.checkCoordsValid(start) || !maze.checkCoordsValid(target)) {
+            throw new IllegalArgumentException("Some of coordinates were invalid!");
+        }
         Map<MazeCoords, MazeCoords> pred = new HashMap<>();
         Set<MazeCoords> visited = new HashSet<>();
         Queue<MazeCoords> q = new ArrayDeque<>();

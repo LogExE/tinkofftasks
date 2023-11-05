@@ -2,6 +2,9 @@ package edu.project2;
 
 public record Maze(int width, int height, Cell[][] cells) {
     public Maze {
+        if (width <= 0 || height <= 0) {
+            throw new IllegalArgumentException("Maze sizes were invalid! (must be positive in both dims)");
+        }
         boolean rightSize = true;
         if (cells.length != height) {
             rightSize = false;
@@ -21,5 +24,9 @@ public record Maze(int width, int height, Cell[][] cells) {
     public enum Cell {
         PASSAGE,
         WALL
+    }
+
+    public boolean checkCoordsValid(MazeCoords coords) {
+        return coords.row() >= 0 && coords.row() < height && coords.col() >= 0 && coords.col() < width;
     }
 }

@@ -49,7 +49,11 @@ public class SimpleMazeRenderer implements MazeRenderer {
     public String render(Maze maze, List<MazeCoords> path) {
         char[][] matrix = getMazeMatrix(maze);
         for (MazeCoords coord : path) {
-            matrix[coord.row()][coord.col()] = PATH_MARK;
+            if (matrix[coord.row()][coord.col()] != CELL_REPR.get(Maze.Cell.WALL)) {
+                matrix[coord.row()][coord.col()] = PATH_MARK;
+            } else {
+                throw new IllegalArgumentException("Path was passing through walls!");
+            }
         }
         return mazeMatrixGlue(matrix);
     }

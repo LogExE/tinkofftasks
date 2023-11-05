@@ -11,6 +11,10 @@ public class RandomMazeGen implements MazeGen {
     Random rand = new Random();
 
     @Override public Maze generate(int width, int height) {
+        if (width <= 0 || height <= 0) {
+            throw new IllegalArgumentException(
+                "Future random maze sizes were invalid! (must be positive in both dims)");
+        }
         Maze.Cell[][] cells = new Maze.Cell[height][];
         for (int i = 0; i < height; ++i) {
             cells[i] = new Maze.Cell[width];
@@ -37,8 +41,8 @@ public class RandomMazeGen implements MazeGen {
         return new Maze(width, height, cells);
     }
 
-    @SuppressWarnings("MagicNumber")
-    @NotNull private static List<MazeCoords> getNextCoords(MazeCoords current, int lastCol, int lastRow) {
+    @SuppressWarnings("MagicNumber") @NotNull
+    private static List<MazeCoords> getNextCoords(MazeCoords current, int lastCol, int lastRow) {
         List<MazeCoords> choices = new ArrayList<>(4);
         if (current.col() > 0) {
             choices.add(new MazeCoords(current.row(), current.col() - 2));
