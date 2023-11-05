@@ -1,6 +1,6 @@
 package edu.project2;
 
-public record Maze(int width, int height, Cell[][] cells) {
+public record Maze(int height, int width, Cell[][] cells) {
     public Maze {
         if (width <= 0 || height <= 0) {
             throw new IllegalArgumentException("Maze sizes were invalid! (must be positive in both dims)");

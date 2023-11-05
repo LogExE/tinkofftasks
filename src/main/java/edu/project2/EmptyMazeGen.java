@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class EmptyMazeGen implements MazeGen {
     @Override
-    public Maze generate(int width, int height) {
+    public Maze generate(int height, int width) {
         if (width <= 0 || height <= 0) {
             throw new IllegalArgumentException("Future empty maze sizes were invalid! (must be positive in both dims)");
         }
@@ -13,6 +13,6 @@ public class EmptyMazeGen implements MazeGen {
             cells[i] = new Maze.Cell[width];
             Arrays.fill(cells[i], Maze.Cell.PASSAGE);
         }
-        return new Maze(width, height, cells);
+        return new Maze(height, width, cells);
     }
 }

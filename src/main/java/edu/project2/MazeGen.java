@@ -1,5 +1,5 @@
 package edu.project2;
 
 public interface MazeGen {
-    Maze generate(int width, int height);
+    Maze generate(int height, int width);
 }

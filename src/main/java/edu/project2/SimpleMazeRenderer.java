@@ -15,7 +15,7 @@ public class SimpleMazeRenderer implements MazeRenderer {
         char[][] res = new char[maze.height()][];
         for (int i = 0; i < maze.height(); ++i) {
             res[i] = new char[maze.width()];
-            for (int j = 0; j < maze.height(); ++j) {
+            for (int j = 0; j < maze.width(); ++j) {
                 res[i][j] = CELL_REPR.get(maze.cells()[i][j]);
             }
         }

@@ -10,7 +10,7 @@ import org.jetbrains.annotations.NotNull;
 public class RandomMazeGen implements MazeGen {
     Random rand = new Random();
 
-    @Override public Maze generate(int width, int height) {
+    @Override public Maze generate(int height, int width) {
         if (width <= 0 || height <= 0) {
             throw new IllegalArgumentException(
                 "Future random maze sizes were invalid! (must be positive in both dims)");
@@ -38,7 +38,7 @@ public class RandomMazeGen implements MazeGen {
             }
             current = next;
         }
-        return new Maze(width, height, cells);
+        return new Maze(height, width, cells);
     }
 
     @SuppressWarnings("MagicNumber") @NotNull

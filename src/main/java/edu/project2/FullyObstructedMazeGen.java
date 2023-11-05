@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class FullyObstructedMazeGen implements MazeGen {
     @Override
-    public Maze generate(int width, int height) {
+    public Maze generate(int height, int width) {
         if (width <= 0 || height <= 0) {
             throw new IllegalArgumentException(
                 "Future fully obstructed maze sizes were invalid! (must be positive in both dims)");
@@ -15,6 +15,6 @@ public class FullyObstructedMazeGen implements MazeGen {
             // путей не будет...
             Arrays.fill(cells[i], Maze.Cell.WALL);
         }
-        return new Maze(width, height, cells);
+        return new Maze(height, width, cells);
     }
 }
