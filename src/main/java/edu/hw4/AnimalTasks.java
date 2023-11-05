@@ -83,7 +83,7 @@ public class AnimalTasks {
 
     public static Map<Animal.Type, Integer> weightTotalByTypeConstrained(Collection<Animal> animals, int k, int l) {
         var sumCollector = Collectors.summingInt(Animal::weight);
-        return animals.stream().filter(a -> a.weight() >= k && a.weight() <= l)
+        return animals.stream().filter(a -> a.age() >= k && a.age() <= l)
             .collect(Collectors.groupingBy(Animal::type, sumCollector));
     }
 
@@ -98,9 +98,9 @@ public class AnimalTasks {
             Animal.Type.SPIDER, 1,
             Animal.Type.DOG, -1
         );
-        boolean enoughInfo =
-            animals.stream().anyMatch(a -> a.type() == Animal.Type.SPIDER)
-                && animals.stream().anyMatch(a -> a.type() == Animal.Type.DOG);
+        long spidersCount = animals.stream().filter(a -> a.type() == Animal.Type.SPIDER).count();
+        long dogsCount = animals.stream().filter(a -> a.type() == Animal.Type.DOG).count();
+        boolean enoughInfo = spidersCount != 0 && spidersCount == dogsCount;
         return enoughInfo && animals.stream().filter(Animal::bites).map(a -> mapTypes.getOrDefault(a.type(), 0))
             .reduce(0, Integer::sum) > 0;
     }
