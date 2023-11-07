@@ -61,7 +61,8 @@ public class AnimalTasks {
     public static Animal kthOldest(Collection<Animal> animals, int k) {
         Comparator<Animal> compByAgeReversed = Comparator.comparingInt(Animal::age).reversed();
         return animals.stream()
-            .sorted(compByAgeReversed).skip(k - 1)
+            .sorted(compByAgeReversed)
+            .skip(k - 1)
             .findFirst()
             .orElse(null);
     }
