@@ -6,6 +6,8 @@ public record NginxLogReport(
     int count,
     List<ResourceFrequency> resourceFreq,
     List<ResponseFrequency> responseFreq,
-    long avgBytesSent
+    long avgBytesSent,
+    int uniqueRemoteAddrs,
+    List<String> largestResourcesGET
 ) {
 }

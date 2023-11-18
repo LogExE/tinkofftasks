@@ -8,27 +8,28 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class NginxReportMDPresenter implements NginxReportPresenter {
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_DATE;
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     @SuppressWarnings("MultipleStringLiterals")
     @Override
     public String present(List<String> paths, LocalDate from, LocalDate to, NginxLogReport report) {
         StringBuilder sb = new StringBuilder();
 
-        sb.append("#### General info\n");
+        sb.append("#### General info\n\n");
         String[] headers = {"Metrics", "Values"};
         String[][] rows = {
             {"Files", enquote(paths)},
             {"Date from", from != LocalDate.MIN ? FORMATTER.format(from) : "-"},
             {"Date to", to != LocalDate.MAX ? FORMATTER.format(to) : "-"},
             {"Request count", String.valueOf(report.count())},
-            {"Average response bytes", String.valueOf(report.avgBytesSent())}
+            {"Average response bytes", report.avgBytesSent() + "b"},
+            {"Unique visitors", String.valueOf(report.uniqueRemoteAddrs())}
         };
         MDTableAlign[] aligns = {MDTableAlign.CENTER, MDTableAlign.RIGHT};
         sb.append(presentMDTable(headers, rows, aligns));
         sb.append("\n");
 
-        sb.append("#### Requested resources\n");
+        sb.append("#### Requested resources\n\n");
         headers = new String[] {"Resource", "Count"};
         rows = report.resourceFreq().stream()
             .map(rf -> new String[] {enquote(rf.resource()), String.valueOf(rf.frequency())})
@@ -37,12 +38,21 @@ public class NginxReportMDPresenter implements NginxReportPresenter {
         sb.append(presentMDTable(headers, rows, aligns));
         sb.append("\n");
 
-        sb.append("#### Responses\n");
+        sb.append("#### Responses\n\n");
         headers = new String[] {"Response", "Count"};
         rows = report.responseFreq().stream()
             .map(rf -> new String[] {String.valueOf(rf.response()), String.valueOf(rf.frequency())})
             .toArray(sz -> new String[sz][1]);
         aligns = new MDTableAlign[] {MDTableAlign.CENTER, MDTableAlign.RIGHT};
+        sb.append(presentMDTable(headers, rows, aligns));
+        sb.append("\n");
+
+        sb.append("#### Largest resources sent through GET\n\n");
+        headers = new String[] {"Resource"};
+        rows = report.largestResourcesGET().stream()
+            .map(res -> new String[] {res})
+            .toArray(sz -> new String[sz][1]);
+        aligns = new MDTableAlign[] {MDTableAlign.CENTER};
         sb.append(presentMDTable(headers, rows, aligns));
         sb.append("\n");
 

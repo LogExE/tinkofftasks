@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class NginxReportADOCPresenter implements NginxReportPresenter {
-    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_DATE;
+    private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
     @SuppressWarnings("MultipleStringLiterals")
     @Override
@@ -16,11 +16,12 @@ public class NginxReportADOCPresenter implements NginxReportPresenter {
         String title = "General info";
         String[] headers = {"Metrics", "Values"};
         String[][] rows = {
-            {"Files", String.join(" ", paths)},
+            {"Files", String.join(", ", paths)},
             {"Date from", from != LocalDate.MIN ? FORMATTER.format(from) : "-"},
             {"Date to", to != LocalDate.MAX ? FORMATTER.format(to) : "-"},
             {"Request count", String.valueOf(report.count())},
-            {"Average response bytes", String.valueOf(report.avgBytesSent())}
+            {"Average response bytes", report.avgBytesSent() + "b"},
+            {"Unique visitors", String.valueOf(report.uniqueRemoteAddrs())}
         };
         sb.append(presentADOCTable(title, headers, rows));
         sb.append("\n");
@@ -39,6 +40,14 @@ public class NginxReportADOCPresenter implements NginxReportPresenter {
             .map(rf -> new String[] {String.valueOf(rf.response()), String.valueOf(rf.frequency())})
             .toArray(sz -> new String[sz][1]);
         sb.append(presentADOCTable(title, headers, rows));
+
+        title = "Largest resources sent through GET";
+        headers = new String[] {"Resource"};
+        rows = report.largestResourcesGET().stream()
+            .map(res -> new String[] {res})
+            .toArray(sz -> new String[sz][1]);
+        sb.append(presentADOCTable(title, headers, rows));
+
         return sb.toString();
     }
 

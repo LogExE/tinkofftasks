@@ -23,6 +23,7 @@ import java.time.Duration;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.stream.Stream;
 
@@ -47,12 +48,14 @@ public class Project3 {
         OffsetDateTime toOff = OffsetDateTime.of(par.to(), LocalTime.MIDNIGHT, offset);
 
         Stream<String> accum = Stream.empty();
+        ArrayList<String> readPaths = new ArrayList<>();
         for (String path : par.paths()) {
             Optional<Stream<String>> lines = tryReadLogURL(path).or(() -> tryReadLogFile(path));
             if (lines.isEmpty()) {
                 System.err.println("Failed to read path " + path + "!");
                 continue;
             }
+            readPaths.add(path);
             accum = Stream.concat(accum, lines.get());
         }
         Stream<NginxLogRecord> records = NginxLogParser.parse(accum)
@@ -64,7 +67,7 @@ public class Project3 {
         } else {
             presenter = new NginxReportADOCPresenter();
         }
-        System.out.println(presenter.present(par.paths(), par.from(), par.to(), report));
+        System.out.println(presenter.present(readPaths, par.from(), par.to(), report));
     }
 
     private static Optional<Stream<String>> tryReadLogURL(String url) {
