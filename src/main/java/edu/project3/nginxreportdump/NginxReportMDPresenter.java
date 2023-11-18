@@ -17,8 +17,8 @@ public class NginxReportMDPresenter implements NginxReportPresenter {
         String[] headers = {"Metrics", "Values"};
         String[][] rows = {
             {"Files", String.join(" ", paths)},
-            {"Date from", FORMATTER.format(from)},
-            {"Date to", FORMATTER.format(to)},
+            {"Date from", from != LocalDate.MIN ? FORMATTER.format(from) : "-"},
+            {"Date to", to != LocalDate.MAX ? FORMATTER.format(to) : "-"},
             {"Request count", String.valueOf(report.count())},
             {"Average response bytes", String.valueOf(report.avgBytesSent())}
         };
