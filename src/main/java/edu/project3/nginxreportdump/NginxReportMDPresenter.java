@@ -14,7 +14,6 @@ public class NginxReportMDPresenter implements NginxReportPresenter {
         StringBuilder sb = new StringBuilder();
 
         sb.append("#### General info\n");
-
         String[] headers = {"Metrics", "Values"};
         String[][] rows = {
             {"Files", String.join(" ", paths)},
@@ -25,6 +24,25 @@ public class NginxReportMDPresenter implements NginxReportPresenter {
         };
         MDTableAlign[] aligns = {MDTableAlign.CENTER, MDTableAlign.RIGHT};
         sb.append(presentMDTable(headers, rows, aligns));
+        sb.append("\n");
+
+        sb.append("#### Requested resources\n");
+        headers = new String[] {"Resource", "Count"};
+        rows = report.resourceFreq().stream()
+            .map(rf -> new String[] {rf.resource(), String.valueOf(rf.frequency())})
+            .toArray(sz -> new String[sz][1]);
+        aligns = new MDTableAlign[] {MDTableAlign.CENTER, MDTableAlign.RIGHT};
+        sb.append(presentMDTable(headers, rows, aligns));
+        sb.append("\n");
+
+        sb.append("#### Responses\n");
+        headers = new String[] {"Response", "Count"};
+        rows = report.responseFreq().stream()
+            .map(rf -> new String[] {String.valueOf(rf.response()), String.valueOf(rf.frequency())})
+            .toArray(sz -> new String[sz][1]);
+        aligns = new MDTableAlign[] {MDTableAlign.CENTER, MDTableAlign.RIGHT};
+        sb.append(presentMDTable(headers, rows, aligns));
+        sb.append("\n");
 
         return sb.toString();
     }
