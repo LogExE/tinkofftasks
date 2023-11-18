@@ -1,10 +1,12 @@
-package edu.project3;
+package edu.project3.nginxlogparser;
 
 import java.time.OffsetDateTime;
 
 public record NginxLogRecord(String remoteAddr, String remoteUser,
                              OffsetDateTime time,
-                             String request,
+                             String requestMethod,
+                             String resource,
+                             String protoVersion,
                              int status,
                              int bodyBytesSent,
                              String httpReferer,
