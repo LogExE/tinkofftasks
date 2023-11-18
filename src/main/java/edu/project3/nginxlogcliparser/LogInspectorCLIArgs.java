@@ -1,4 +1,4 @@
-package edu.project3.cliparser;
+package edu.project3.nginxlogcliparser;
 
 import java.time.LocalDate;
 import java.util.List;

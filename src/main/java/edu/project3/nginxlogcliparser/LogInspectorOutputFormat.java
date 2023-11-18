@@ -1,4 +1,4 @@
-package edu.project3.cliparser;
+package edu.project3.nginxlogcliparser;
 
 public enum LogInspectorOutputFormat {
     MARKDOWN,
