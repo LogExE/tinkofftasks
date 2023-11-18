@@ -3,12 +3,12 @@ package edu.project3.nginxreportdump;
 import edu.project3.nginxlogstats.NginxLogReport;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 
 public class NginxReportMDPresenter implements NginxReportPresenter {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_DATE;
 
+    @SuppressWarnings("MultipleStringLiterals")
     @Override
     public String present(List<String> paths, LocalDate from, LocalDate to, NginxLogReport report) {
         StringBuilder sb = new StringBuilder();
@@ -53,14 +53,15 @@ public class NginxReportMDPresenter implements NginxReportPresenter {
         RIGHT
     }
 
+    @SuppressWarnings("MultipleStringLiterals")
     private String presentMDTable(String[] headers, String[][] rows, MDTableAlign[] colAligns) {
         int[] maxLens = new int[headers.length];
         for (int i = 0; i < headers.length; ++i) {
             maxLens[i] = headers[i].length();
         }
-        for (int i = 0; i < rows.length; ++i) {
+        for (String[] row : rows) {
             for (int j = 0; j < rows[0].length; ++j) {
-                maxLens[j] = Math.max(maxLens[j], rows[i][j].length());
+                maxLens[j] = Math.max(maxLens[j], row[j].length());
             }
         }
 
@@ -79,9 +80,9 @@ public class NginxReportMDPresenter implements NginxReportPresenter {
         }
         sb.append("|\n");
 
-        for (int i = 0; i < rows.length; ++i) {
+        for (String[] row : rows) {
             for (int j = 0; j < rows[0].length; ++j) {
-                String padded = String.format(" %" + maxLens[j] + "s ", rows[i][j]);
+                String padded = String.format(" %" + maxLens[j] + "s ", row[j]);
                 sb.append("|").append(padded);
             }
             sb.append("|\n");

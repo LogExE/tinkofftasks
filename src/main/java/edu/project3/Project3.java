@@ -28,6 +28,7 @@ import java.util.stream.Stream;
 
 public class Project3 {
     private static final HttpClient HTTP_CL = HttpClient.newHttpClient();
+    private static final int HTTP_TIMEOUT_SECS = 10;
 
     private Project3() {
     }
@@ -72,7 +73,7 @@ public class Project3 {
             HttpRequest req = HttpRequest.newBuilder()
                 .uri(uri)
                 .GET()
-                .timeout(Duration.ofSeconds(10))
+                .timeout(Duration.ofSeconds(HTTP_TIMEOUT_SECS))
                 .build();
             var resp = HTTP_CL.send(req, HttpResponse.BodyHandlers.ofLines());
             return Optional.of(resp.body());

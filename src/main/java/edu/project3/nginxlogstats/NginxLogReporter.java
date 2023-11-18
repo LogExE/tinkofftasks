@@ -1,19 +1,18 @@
 package edu.project3.nginxlogstats;
 
 import edu.project3.nginxlogparser.NginxLogRecord;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class NginxLogReporter {
     private NginxLogReporter() {
 
     }
+
+    private static final int MAX_RESOURCES = 5;
+    private static final int MAX_RESPONSES = 5;
 
     public static NginxLogReport makeReport(Stream<NginxLogRecord> records) {
         HashMap<String, Integer> resFreq = new HashMap<>();
@@ -30,12 +29,12 @@ public class NginxLogReporter {
             count,
             resFreq.entrySet().stream()
                 .sorted(Comparator.comparingInt(Map.Entry<String, Integer>::getValue).reversed())
-                .limit(5)
+                .limit(MAX_RESOURCES)
                 .map(e -> new ResourceFrequency(e.getKey(), e.getValue()))
                 .toList(),
             respFreq.entrySet().stream()
                 .sorted(Comparator.comparingInt(Map.Entry<Integer, Integer>::getValue).reversed())
-                .limit(5)
+                .limit(MAX_RESPONSES)
                 .map(e -> new ResponseFrequency(e.getKey(), e.getValue()))
                 .toList(),
             count != 0 ? total / count : 0

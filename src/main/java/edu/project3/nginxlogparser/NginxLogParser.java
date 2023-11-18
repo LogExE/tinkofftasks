@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 public class NginxLogParser {
+    @SuppressWarnings("LineLength")
     private static final Pattern LOG_PAT = Pattern.compile(
         "(?<remoteAddr>.*)\\s*-\\s*(?<remoteUser>.*)\\s*-\\s*\\[(?<timeLocal>.*)]\\s*\"(?<requestMethod>.*) (?<resource>.*) (?<protoVer>.*)\"\\s*(?<status>\\d*)\\s*(?<bytesSent>\\d*)\\s*\"(?<httpReferer>.*)\"\\s*\"(?<httpAgent>.*)\""
     );
