@@ -8,6 +8,7 @@ import java.util.List;
 public class NginxReportADOCPresenter implements NginxReportPresenter {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_DATE;
 
+    @SuppressWarnings("MultipleStringLiterals")
     @Override
     public String present(List<String> paths, LocalDate from, LocalDate to, NginxLogReport report) {
         StringBuilder sb = new StringBuilder();
