@@ -3,7 +3,9 @@ package edu.project3.nginxreportdump;
 import edu.project3.nginxlogstats.NginxLogReport;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class NginxReportMDPresenter implements NginxReportPresenter {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_DATE;
@@ -16,7 +18,7 @@ public class NginxReportMDPresenter implements NginxReportPresenter {
         sb.append("#### General info\n");
         String[] headers = {"Metrics", "Values"};
         String[][] rows = {
-            {"Files", String.join(" ", paths)},
+            {"Files", enquote(paths)},
             {"Date from", from != LocalDate.MIN ? FORMATTER.format(from) : "-"},
             {"Date to", to != LocalDate.MAX ? FORMATTER.format(to) : "-"},
             {"Request count", String.valueOf(report.count())},
@@ -29,7 +31,7 @@ public class NginxReportMDPresenter implements NginxReportPresenter {
         sb.append("#### Requested resources\n");
         headers = new String[] {"Resource", "Count"};
         rows = report.resourceFreq().stream()
-            .map(rf -> new String[] {rf.resource(), String.valueOf(rf.frequency())})
+            .map(rf -> new String[] {enquote(rf.resource()), String.valueOf(rf.frequency())})
             .toArray(sz -> new String[sz][1]);
         aligns = new MDTableAlign[] {MDTableAlign.CENTER, MDTableAlign.RIGHT};
         sb.append(presentMDTable(headers, rows, aligns));
@@ -45,6 +47,14 @@ public class NginxReportMDPresenter implements NginxReportPresenter {
         sb.append("\n");
 
         return sb.toString();
+    }
+
+    private static String enquote(Collection<String> arr) {
+        return arr.stream().collect(Collectors.joining("`, `", "`", "`"));
+    }
+
+    private static String enquote(String str) {
+        return "`" + str + "`";
     }
 
     private enum MDTableAlign {
