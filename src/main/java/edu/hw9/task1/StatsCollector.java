@@ -4,7 +4,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class StatsCollector {
-    ConcurrentHashMap<String, ProducedStats> metrics;
+    private final ConcurrentHashMap<String, ProducedStats> metrics;
 
     public StatsCollector() {
         metrics = new ConcurrentHashMap<>();
