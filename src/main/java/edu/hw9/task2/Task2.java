@@ -1,15 +1,18 @@
 package edu.hw9.task2;
 
+/*
 import java.io.File;
 import java.nio.file.Path;
 import java.util.concurrent.ForkJoinPool;
 import java.util.function.Predicate;
+ */
 
 public class Task2 {
     private Task2() {
 
     }
 
+    /*
     public static void main(String[] args) {
         try (ForkJoinPool pool = ForkJoinPool.commonPool()) {
             Path path = Path.of("/home");
@@ -29,4 +32,5 @@ public class Task2 {
             System.out.println(pool.invoke(new FilePredicateSearch(path, sizePred)));
         }
     }
+     */
 }
