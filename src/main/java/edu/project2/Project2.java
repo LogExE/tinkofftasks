@@ -27,7 +27,7 @@ public class Project2 {
         int r2 = scanner.nextInt();
         int c2 = scanner.nextInt();
         MazeCoords cor2 = new MazeCoords(r2, c2);
-        Optional<List<MazeCoords>> path = new BFSMazeSolver().solve(mz, cor1, cor2);
+        Optional<List<MazeCoords>> path = new BFSParMazeSolver().solve(mz, cor1, cor2);
         if (path.isPresent()) {
             System.out.println("The path:");
             System.out.println(mr.render(mz, path.get()));
