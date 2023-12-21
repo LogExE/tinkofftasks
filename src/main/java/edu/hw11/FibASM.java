@@ -6,14 +6,15 @@ import net.bytebuddy.implementation.bytecode.ByteCodeAppender;
 import net.bytebuddy.jar.asm.Label;
 import net.bytebuddy.jar.asm.MethodVisitor;
 import net.bytebuddy.jar.asm.Opcodes;
+import org.jetbrains.annotations.NotNull;
 
 public class FibASM implements ByteCodeAppender {
     @Override
     @SuppressWarnings("MagicNumber")
-    public Size apply(
+    public @NotNull Size apply(
         MethodVisitor mv,
-        Implementation.Context ctx,
-        MethodDescription mtdDescr
+        Implementation.@NotNull Context ctx,
+        @NotNull MethodDescription mtdDescr
     ) {
         mv.visitCode();
 
@@ -31,10 +32,10 @@ public class FibASM implements ByteCodeAppender {
         Label lEnd = new Label();
 
         mv.visitLabel(lFor);
-        // if i > n goto lEnd
+        // if i >= n goto lEnd
         mv.visitVarInsn(Opcodes.ILOAD, 4);
         mv.visitVarInsn(Opcodes.ILOAD, 1);
-        mv.visitJumpInsn(Opcodes.IF_ICMPGT, lEnd);
+        mv.visitJumpInsn(Opcodes.IF_ICMPGE, lEnd);
 
         // b = a + b
         mv.visitVarInsn(Opcodes.ILOAD, 2);
